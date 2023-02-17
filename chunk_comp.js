@@ -27,14 +27,11 @@ export async function Create(FileInput, TotalChunks, Callback) {
     if (!typeof TotalChunks === "bigint") throw new Error("'TotalChunks' is not specified as a 'integer'.");
     if (!typeof Callback === "function") throw new Error("'Callback' is not specified as a 'function'.");
 
-    console.log(TotalChunks)
-
     // Store all chunks of data here.
     let DataDeconstructed = [];
 
     // Time to enumerate each number of $TotalChunks.
     for (let Index = 0; Index < TotalChunks; Index++) {
-        console.log("Chunk " + Index)
         const StartOfChunk = Index * ChunkSize; // The new chunk, depending on index.
         let EndOfChunk = Math.min(StartOfChunk + ChunkSize, FileInput.size); // The end of the chunk.
 
